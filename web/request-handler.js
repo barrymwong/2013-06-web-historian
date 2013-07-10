@@ -1,5 +1,6 @@
 exports.datadir = __dirname + "/data/sites.txt"; // tests will need to override this.
 var url = require('url');
+var fs = require('fs');
 
 exports.handleRequest = function (req, res) {
   // handle POSTs
@@ -21,6 +22,8 @@ exports.handleRequest = function (req, res) {
       data = chunk;
     });
     req.on('end', function() {
+      data = data.substring(4) + '\n';
+      fs.writeFileSync(exports.datadir, data);
       res.writeHead(302);
       res.end();
     });
