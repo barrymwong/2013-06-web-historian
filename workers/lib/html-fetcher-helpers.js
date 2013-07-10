@@ -1,4 +1,5 @@
 var _ = require('underscore');
+var http = require('http-get');
 
 exports.readUrls = function(filePath, cb){
   // fixme
@@ -8,6 +9,14 @@ exports.readUrls = function(filePath, cb){
 };
 
 exports.downloadUrls = function(urls){
-  // fixme
+  http.get(urls, '../data/sites/' + urls, function (error, result) {
+    if (error) {
+      console.error(error);
+    } else {
+      console.log('File downloaded at: ' + result.file);
+    }
+  });
   return true;
 };
+
+

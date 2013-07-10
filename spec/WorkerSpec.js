@@ -21,7 +21,7 @@ describe("html fetcher helpers", function(){
   });
   
   it("should have a 'downloadUrls' function", function(){
-    var result = htmlFetcherHelpers.downloadUrls();
+    var result = htmlFetcherHelpers.downloadUrls('www.google.com');
     expect(result).toBeTruthy();
   });
 });
