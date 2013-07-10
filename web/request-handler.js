@@ -6,5 +6,6 @@ exports.handleRequest = function (req, res) {
   // end a response
   if(req.method == "GET"){
     res.writeHead(200);
+    res.end();
   }
 };
