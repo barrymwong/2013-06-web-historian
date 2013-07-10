@@ -8,8 +8,8 @@ exports.readUrls = function(filePath, cb){
   });
 };
 
-exports.downloadUrls = function(urls){
-  http.get(urls, '../data/sites/' + urls, function (error, result) {
+exports.downloadUrls = function(url){
+  http.get(url, '../data/sites/' + url, function (error, result) {
     if (error) {
       console.error(error);
     } else {
@@ -18,5 +18,3 @@ exports.downloadUrls = function(urls){
   });
   return true;
 };
-
-
