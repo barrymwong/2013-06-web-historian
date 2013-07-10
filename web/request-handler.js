@@ -1,11 +1,19 @@
 exports.datadir = __dirname + "data/sites.txt"; // tests will need to override this.
 
+var url = require('url');
+
 exports.handleRequest = function (req, res) {
-  // response 200 to a GET
-  // check URL
-  // end a response
-  if(req.method == "GET"){
+  // Require URL
+  // Request 'url' - parse required url - path
+  // Split the path by '/'
+  var path = url.parse(req.url).path.split('/');
+  console.log(path);
+  if(req.method === "GET"){
     res.writeHead(200);
-    res.end();
+    var result = '<input>';
+    if(path[1]){
+      result = path[1];
+    }
+    res.end(result);
   }
 };
