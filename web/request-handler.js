@@ -9,12 +9,8 @@ exports.handleRequest = function (req, res) {
   if(req.method === "GET"){
     var result = '<input>';
 
-    var fileContents = fs.readFileSync(exports.datadir, 'utf8');
-    var re = new RegExp(path[1]);
-    var test = re.test(fileContents);
-
     if(path[1]){
-      if(test){
+      if(fileExists(path[1])){
         res.writeHead(200);
         result = path[1];
         res.end(result);
@@ -39,4 +35,9 @@ exports.handleRequest = function (req, res) {
       res.end();
     });
   }
+};
+
+var fileExists = function(filename){
+    var re = new RegExp(filename);
+    return re.test(fs.readFileSync(exports.datadir, 'utf8'));
 };
