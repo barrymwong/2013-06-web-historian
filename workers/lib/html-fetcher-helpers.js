@@ -1,5 +1,6 @@
 var _ = require('underscore');
 var http = require('http-get');
+var datadir = __dirname + "/../../data/sites/";
 
 exports.readUrls = function(filePath, cb){
   // fixme
@@ -9,7 +10,7 @@ exports.readUrls = function(filePath, cb){
 };
 
 exports.downloadUrls = function(url){
-  http.get(url, '../data/sites/' + url, function (error, result) {
+  http.get(url, datadir + url, function (error, result) {
     if (error) {
       console.error(error);
     } else {
